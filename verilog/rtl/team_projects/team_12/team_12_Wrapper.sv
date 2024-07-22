@@ -43,6 +43,16 @@ module team_12_Wrapper (
     output wire [37:0] gpio_out, // Breakout Board Pins
     output wire [37:0] gpio_oeb, // Active Low Output Enable
 
+    // Wishbone Master signals
+    output wire [31:0] ADR_O,
+    output wire [31:0] DAT_O,
+    output wire [3:0]  SEL_O,
+    output wire        WE_O,
+    output wire        STB_O,
+    output wire        CYC_O,
+    input  wire [31:0] DAT_I,
+    input wire         ACK_I
+
     // IRQ signal
     output wire [2:0] irq
 );
@@ -62,6 +72,14 @@ module team_12_Wrapper (
     * instantiate your top level module instead (team_12).
     *--------------------------------------------------------------
     */
+
+    //Unused connection to nebula_ii wishbone arbitrator
+    assign ADR_O = 32'b0;
+    assign DAT_O = 32'b0;
+    assign SEL_O = 4'b0;
+    assign  WE_O = 1'b0;
+    assign STB_O = 1'b0;
+    assign CYC_O = 1'b0;
 
     //Assign to unused outputs
     assign irq = 3'b000;	// Unused
